@@ -1,7 +1,6 @@
 package com.fedex.logger.services.impl;
 
 import com.fedex.logger.dao.FpUserActionLogsDao;
-import com.fedex.logger.dto.FlightSearchDTO;
 import com.fedex.logger.models.FpUserActionLogs;
 import com.fedex.logger.services.UserActionLogsService;
 import org.springframework.stereotype.Service;

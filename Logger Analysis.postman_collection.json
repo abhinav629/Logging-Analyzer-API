@@ -1,0 +1,161 @@
+{
+	"info": {
+		"_postman_id": "6a538e17-5595-413e-b414-32b8a61f471c",
+		"name": "Logger Analysis",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add Log",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"flightNumber\":1258,\n    \"flightDate\":\"2021-08-21\",\n    \"legNumber\":46775,\n    \"iterationNumber\":101,\n    \"userId\":\"35869\",\n    \"actionType\": \"UPDATE\",\n    \"actionDescription\":\"Updated Value From 50 to 100\",\n    \"previousValue\":\"50\",\n    \"currentValue\":\"100\",\n    \"fieldReference\": \"FLIGHT_INPUT\",\n    \"valueType\":\"Integer\",\n    \"sessionTimestamp\":1620670031,\n    \"userBrowserInformation\":\"Chrome V 89.009\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{default_url}}/add",
+					"host": [
+						"{{default_url}}"
+					],
+					"path": [
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Logs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{default_url}}/all",
+					"host": [
+						"{{default_url}}"
+					],
+					"path": [
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Log",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{default_url}}/1",
+					"host": [
+						"{{default_url}}"
+					],
+					"path": [
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Session Wise Logs For A User",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{default_url}}/user/35869",
+					"host": [
+						"{{default_url}}"
+					],
+					"path": [
+						"user",
+						"35869"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Logs For A Flight",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{default_url}}/flight?flightNumber=1258&legNumber=46775&flightDate=2021-08-21",
+					"host": [
+						"{{default_url}}"
+					],
+					"path": [
+						"flight"
+					],
+					"query": [
+						{
+							"key": "flightNumber",
+							"value": "1258"
+						},
+						{
+							"key": "legNumber",
+							"value": "46775"
+						},
+						{
+							"key": "flightDate",
+							"value": "2021-08-21"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Log",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{default_url}}/18",
+					"host": [
+						"{{default_url}}"
+					],
+					"path": [
+						"18"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "default_url",
+			"value": "http://localhost:8000/api/logs"
+		}
+	]
+}

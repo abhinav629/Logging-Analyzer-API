@@ -1,7 +1,5 @@
 package com.fedex.logger.services;
 
-import com.fedex.logger.dto.FlightSearchDTO;
-import com.fedex.logger.models.FpUserActionLogs;
 import com.fedex.logger.models.FpUserActionLogs;
 
 import java.sql.Date;

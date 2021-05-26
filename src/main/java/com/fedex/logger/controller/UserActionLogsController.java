@@ -1,6 +1,5 @@
 package com.fedex.logger.controller;
 
-import com.fedex.logger.dto.FlightSearchDTO;
 import com.fedex.logger.models.FpUserActionLogs;
 import com.fedex.logger.services.UserActionLogsService;
 import org.springframework.http.HttpStatus;
@@ -45,7 +44,7 @@ public class UserActionLogsController {
     }
 
     @PostMapping({"/add"})
-    public ResponseEntity<FpUserActionLogs> addLog(@RequestBody FpUserActionLogs fp_user_action_log) {
+    public ResponseEntity<FpUserActionLogs> addLog(@Valid @RequestBody FpUserActionLogs fp_user_action_log) {
         return new ResponseEntity(userActionLogsService.addLog(fp_user_action_log), HttpStatus.CREATED);
     }
 
