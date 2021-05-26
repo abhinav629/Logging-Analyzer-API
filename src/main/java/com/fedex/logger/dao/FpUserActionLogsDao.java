@@ -1,6 +1,7 @@
 package com.fedex.logger.dao;
 
 import com.fedex.logger.models.FpUserActionLogs;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
@@ -49,7 +50,12 @@ public class FpUserActionLogsDao {
     public FpUserActionLogs getLog(int FP_USER_ACTION_LOGID){
         Map parameters = new HashMap<> ();
         parameters.put("FP_USER_ACTION_LOGID", FP_USER_ACTION_LOGID);
-        return namedParameterJdbcTemplate.queryForObject(FETCH_LOG, parameters, fpUserActionLogsRowMapper);
+        try {
+            return namedParameterJdbcTemplate.queryForObject(FETCH_LOG, parameters, fpUserActionLogsRowMapper);
+        }
+        catch(EmptyResultDataAccessException e){
+            return null;
+        }
     }
 
     public List<FpUserActionLogs> getAllLogsForAUser(String uid){
