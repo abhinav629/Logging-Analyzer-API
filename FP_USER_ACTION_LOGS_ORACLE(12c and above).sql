@@ -1,6 +1,6 @@
 create table FP_USER_ACTION_LOGS
 (
-    FP_USER_ACTION_LOGID int auto_increment
+    FP_USER_ACTION_LOGID int GENERATED ALWAYS as IDENTITY(START with 1 INCREMENT by 1)
         primary key,
     FLT_NBR              int                                      null,
     FLT_DT               date                                     null,

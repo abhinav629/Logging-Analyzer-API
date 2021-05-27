@@ -18,5 +18,7 @@ public interface UserActionLogsService {
 
     FpUserActionLogs addLog(FpUserActionLogs fp_user_action_log);
 
+    List<FpUserActionLogs> bulkAddLogs(List<FpUserActionLogs> fp_user_action_logs);
+
     void deleteLog(Integer flightId);
 }

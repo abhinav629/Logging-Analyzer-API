@@ -1,0 +1,2 @@
+-- Sequence DLL
+CREATE SEQUENCE log_seq START WITH 1;

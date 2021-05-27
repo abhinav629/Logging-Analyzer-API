@@ -130,6 +130,32 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Bulk Add Logs",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"flightNumber\":1258,\n        \"flightDate\":\"2021-08-21\",\n        \"legNumber\":46775,\n        \"iterationNumber\":101,\n        \"userId\":\"35869\",\n        \"actionType\": \"UPDATE\",\n        \"actionDescription\":\"Updated Value From 50 to 100\",\n        \"previousValue\":\"50\",\n        \"currentValue\":\"100\",\n        \"fieldReference\": \"FLIGHT_INPUT\",\n        \"valueType\":\"Integer\",\n        \"sessionTimestamp\":1620670031,\n        \"userBrowserInformation\":\"Chrome V 89.009\"\n    },\n    {\n        \"flightNumber\":1258,\n        \"flightDate\":\"2021-08-21\",\n        \"legNumber\":46775,\n        \"iterationNumber\":101,\n        \"userId\":\"35869\",\n        \"actionType\": \"UPDATE\",\n        \"actionDescription\":\"Updated Value From 50 to 100\",\n        \"previousValue\":\"50\",\n        \"currentValue\":\"100\",\n        \"fieldReference\": \"FLIGHT_INPUT\",\n        \"valueType\":\"Integer\",\n        \"sessionTimestamp\":1620670031,\n        \"userBrowserInformation\":\"Chrome V 89.009\"\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{default_url}}/bulkAdd",
+					"host": [
+						"{{default_url}}"
+					],
+					"path": [
+						"bulkAdd"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [

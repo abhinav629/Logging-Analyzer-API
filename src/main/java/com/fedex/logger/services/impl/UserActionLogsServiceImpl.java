@@ -44,6 +44,11 @@ public class UserActionLogsServiceImpl implements UserActionLogsService {
     }
 
     @Override
+    public List<FpUserActionLogs> bulkAddLogs(List<FpUserActionLogs> fp_user_action_logs){
+        return fpUserActionLogs_dao.bulkAddLog(fp_user_action_logs);
+    }
+
+    @Override
     public void deleteLog(Integer logId) {
         fpUserActionLogs_dao.deleteLog(logId);
     }

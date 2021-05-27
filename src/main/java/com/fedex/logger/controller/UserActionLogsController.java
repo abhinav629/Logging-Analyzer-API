@@ -48,6 +48,11 @@ public class UserActionLogsController {
         return new ResponseEntity(userActionLogsService.addLog(fp_user_action_log), HttpStatus.CREATED);
     }
 
+    @PostMapping({"/bulkAdd"})
+    public ResponseEntity<FpUserActionLogs> bulkAddLogs(@Valid @RequestBody List<FpUserActionLogs> fp_user_action_logs) {
+        return new ResponseEntity(userActionLogsService.bulkAddLogs(fp_user_action_logs), HttpStatus.CREATED);
+    }
+
     @DeleteMapping({"/{logId}"})
     public ResponseEntity<String> deleteLog(@PathVariable(required = true, name = "logId") Integer logId) {
         userActionLogsService.deleteLog(logId);

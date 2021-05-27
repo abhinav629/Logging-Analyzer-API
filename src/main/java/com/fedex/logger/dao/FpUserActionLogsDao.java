@@ -89,8 +89,7 @@ public class FpUserActionLogsDao {
         return new ArrayList<> ();
     }
 
-    public FpUserActionLogs addLog(FpUserActionLogs fp_user_action_log) {
-        KeyHolder holder = new GeneratedKeyHolder();
+    private SqlParameterSource sourceMap(FpUserActionLogs fp_user_action_log){
         SqlParameterSource parameters = new MapSqlParameterSource()
                 .addValue("FLT_NBR", fp_user_action_log.getFlightNumber())
                 .addValue("FLT_DT", fp_user_action_log.getFlightDate())
@@ -106,9 +105,25 @@ public class FpUserActionLogsDao {
                 .addValue("SESS_TMSTP", fp_user_action_log.getSessionTimestamp())
                 .addValue("USR_BRW_IF", fp_user_action_log.getUserBrowserInformation())
                 .addValue("STATUS", fp_user_action_log.getStatus());
+        return parameters;
+    }
+
+    public FpUserActionLogs addLog(FpUserActionLogs fp_user_action_log) {
+        KeyHolder holder = new GeneratedKeyHolder();
+        SqlParameterSource parameters = this.sourceMap(fp_user_action_log);
         namedParameterJdbcTemplate.update(INSERT_SQL, parameters, holder);
         fp_user_action_log.setFpUserActionLogId(holder.getKey().intValue());
         return fp_user_action_log;
+    }
+
+    public List<FpUserActionLogs> bulkAddLog(List<FpUserActionLogs> fp_user_action_logs) {
+        SqlParameterSource[] bulkParameters = new SqlParameterSource[fp_user_action_logs.size()];
+        final int[] counter = {0};
+        fp_user_action_logs.forEach(fpUserActionLogs -> {
+            bulkParameters[counter[0]++] = this.sourceMap(fpUserActionLogs);
+        });
+        namedParameterJdbcTemplate.batchUpdate(INSERT_SQL, bulkParameters);
+        return fp_user_action_logs;
     }
 
     public void deleteLog(Integer FP_USER_ACTION_LOGID){
